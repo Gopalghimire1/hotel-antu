@@ -1,0 +1,163 @@
+.fliker{
+    height:30px;
+    display: flex;
+    justify-content: flex-end;
+    background: var(--fliker_bgcolor);
+    .text{
+
+        line-height: 30px;
+        color:var(--fliker_color);
+        padding-right:40px;
+        a{
+            color:var(--fliker_color);
+            text-decoration: none;
+            margin:0px 5px;
+            &:hover{
+                color:var(--fliker_hover_color);
+
+            }
+        }
+        .fliker_social{
+           
+            margin:0px 5px ; 
+        }
+    }
+}
+.header{
+    z-index:2;
+    position:relative;
+    display:flex;
+    justify-content: flex-end;
+    padding:20px 50px;
+    background: var(--header_bgcolor);
+    color: var(--header_color);
+    .navbar-brand{
+        position:absolute;
+        top:-30px;
+        left:50px;
+        width:225px;
+        height:125px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--header_brand_bgcolor);
+        color: var(--header_brand_color);
+        img{
+            width:75%;
+        }
+    }
+    .navbar-nav{
+        display: inline-block;
+        .nav-link{
+            font-weight:600;
+            text-decoration: none;
+            cursor: pointer;
+            background: var(--nav_link_bgcolor);
+            color: var(--nav_link_color);
+            display: inline;
+            margin:0px 10px;
+            &:hover{
+                color: var(--nav_link_hovercolor);
+
+            }
+            &.active{
+                border-bottom: 1px solid var(--nav_link_hovercolor);
+                padding-bottom: 3px;
+            }
+        }
+    }
+    .toogle_menu{
+        display:none;
+    }
+}
+@media (max-width:768px)   {
+    .sidenav{
+        height: 100%; /* 100% Full-height */
+        width: 0; /* 0 width - change this with JavaScript */
+        position: fixed; /* Stay in place */
+        z-index: 999; /* Stay on top */
+        top: 0; /* Stay at the top */
+        left: 0;
+        background-color: var(--header_bgcolor); /* Black*/
+        overflow-x: hidden; /* Disable horizontal scroll */
+        padding-top: 5px; /* Place content 60px from the top */
+        transition: 0.5s;
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color:white;
+            text-decoration: none;
+          }
+        .logo{
+            text-align:left;
+            padding-bottom:20px;
+            border-bottom:2px solid var(--header_color);
+
+            img{
+                width:100px
+            }
+        }
+        .sidebar-nav{
+            .nav-link{
+                font-weight:600;
+                text-decoration: none;
+                cursor: pointer;
+                background: var(--nav_link_bgcolor);
+                color: var(--nav_link_color);
+                display: block;
+                margin:0px 10px;
+                &:hover{
+                    color: var(--nav_link_hovercolor);
+    
+                }
+                &.active{
+                    border-bottom: 1px solid var(--nav_link_hovercolor);
+                    padding-bottom: 3px;
+                }
+            }
+        }
+    }
+    .fliker{
+       display:none;
+    }
+    .header{
+        z-index: 2;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        padding: 0px;
+        justify-content: flex-end;
+        display: flex;
+        .navbar-brand{
+            height:100px;
+            position:absolute;
+            top:0; 
+            left:0;
+            width:150px;
+            padding:5px;
+            background: var(--header_brand_bgcolor);
+            color: var(--header_brand_color);
+            img{
+               width:85%;
+            }
+        }
+        .navbar-nav{
+            display: none;
+          
+        }
+        .toogle_menu{
+            display:inline-block;
+            height:55px;
+            width:55px;
+            padding:7px;
+            background: var(--header_brand_bgcolor);
+            color: var(--header_brand_color);
+            
+        }
+    }
+}

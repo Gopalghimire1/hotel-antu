@@ -1,0 +1,211 @@
+#singleroom {
+  background: var(--singleroom_bgcolor);
+}
+
+#singleroom #singleroom_header {
+  height: calc(60vh);
+  background-position: center;
+  background-size: 100% auto;
+}
+
+#singleroom #singleroom_name {
+  padding: 50px 100px 25px 100px;
+  color: var(--singleroom_name_color);
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#singleroom #singleroom_desc {
+  padding: 0px 100px 50px 100px;
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+#singleroom #singleroom_desc #singleroom_book {
+  margin-bottom: 20px;
+  line-height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: var(--header_bgcolor);
+  color: var(--header_color);
+  padding: 15px;
+  border-radius: 5px;
+}
+
+#singleroom #singleroom_desc #singleroom_book span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#singleroom #singleroom_desc #singleroom_book {
+  text-align: center;
+}
+
+#singleroom #singleroom_desc #singleroom_book a {
+  text-decoration: none;
+  border: none;
+  color: var(--singlesuite_more_color);
+  background-color: var(--singlesuite_more_bgcolor);
+  padding: 10px 28px;
+  border-radius: 5px;
+}
+
+#singleroom #singleroom_desc #singleroom_imagecontainer {
+  padding: 30px 100px;
+}
+
+#singleroom #singleroom_desc #singleroom_imagecontainer .singleroom_feature {
+  margin-bottom: 6px;
+  max-height: 70vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#singleroom #singleroom_desc #singleroom_imagecontainer .singleroom_gallery {
+  padding: 3px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  max-width: 20%;
+}
+
+#singleroom #singleroom_desc #singleroom_imagecontainer .singleroom_image {
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background: var(--singleroom_image_bgcolor);
+  padding: 5px;
+}
+
+#singleroom #singleroom_desc #singleroom_imagecontainer .singleroom_image img {
+  border-radius: 5px;
+}
+
+#singleroom #singleroom_desc #singleroom_desccontainer {
+  padding-bottom: 30px;
+}
+
+#singleroom #singleroom_desc #singleroom_desccontainer .singleroom_facilities {
+  color: var(--singleroom_name_color);
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#singleroom #singleroom_facilities #singleroom_facilities_header {
+  padding: 50px 100px 25px 100px;
+}
+
+#singleroom #singleroom_facilities #singleroom_facilities_header span {
+  padding: 0px 20px;
+  color: var(--singleroom_name_color);
+  font-weight: 700;
+  font-size: 32px;
+  display: inline-block;
+  border-bottom: 2px solid #5a5a5a;
+}
+
+#singleroom #singleroom_facilities .singleroom_facilities_item {
+  color: var(--singleroom_facilities_item_color);
+}
+
+#singleroom #singleroom_facilities .singleroom_facilities_item span {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  #singleroom {
+    background: var(--singleroom_bgcolor);
+  }
+  #singleroom #singleroom_header {
+    height: calc(60vh);
+    background-position: center;
+    background-size: auto 100%;
+  }
+  #singleroom #singleroom_name {
+    padding: 20px 15px 15px 15px;
+    color: var(--singleroom_name_color);
+    font-weight: 600;
+    font-size: 25px;
+  }
+  #singleroom #singleroom_desc {
+    padding: 0px 15px 20px 15px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    text-align: justify;
+  }
+  #singleroom #singleroom_desc #singleroom_imagecontainer {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    margin-bottom: 15px;
+    border-right: none;
+    padding: 0px;
+  }
+  #singleroom #singleroom_desc #singleroom_imagecontainer .singleroom_feature {
+    margin-bottom: 6px;
+  }
+  #singleroom #singleroom_desc #singleroom_imagecontainer .singleroom_gallery {
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    width: 25%;
+  }
+  #singleroom #singleroom_desc #singleroom_imagecontainer .f-wrap {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  #singleroom #singleroom_desc #singleroom_imagecontainer .singleroom_image {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background: var(--singleroom_image_bgcolor);
+    padding: 5px;
+  }
+  #singleroom #singleroom_desc #singleroom_imagecontainer .singleroom_image img {
+    border-radius: 5px;
+  }
+  #singleroom #singleroom_desc #singleroom_desccontainer {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  #singleroom #singleroom_facilities #singleroom_facilities_header {
+    text-align: center;
+    padding: 25px 15px 25px 15px;
+  }
+  #singleroom #singleroom_facilities #singleroom_facilities_header span {
+    padding: 0px 20px;
+    color: var(--singleroom_name_color);
+    font-weight: 700;
+    font-size: 32px;
+    display: inline-block;
+    border-bottom: 2px solid #5a5a5a;
+  }
+  #singleroom #singleroom_facilities .singleroom_facilities_item {
+    color: var(--singleroom_facilities_item_color);
+    text-align: center;
+  }
+  #singleroom #singleroom_facilities .singleroom_facilities_item span {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+}
+/*# sourceMappingURL=singleroom.css.map */

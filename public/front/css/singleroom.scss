@@ -1,0 +1,210 @@
+#singleroom{
+    background:var(--singleroom_bgcolor);
+    #singleroom_header{
+        height:calc(60vh);
+        background-position: center;
+        background-size: 100% auto;
+    }
+    #singleroom_name{
+        padding:50px 100px 25px 100px ;
+        color:var(--singleroom_name_color);
+        font-weight:700;
+        font-size:32px;
+        
+        // &::after{
+        //     position: absolute;
+        //     bottom:75px;
+        //     content: "";
+        //     height:3px;
+        //     width:100px;
+        //     left:calc(50% - 50px);
+        //     background:var(--singleroom_name_ucolor) ;
+        // }
+    }
+    #singleroom_desc{
+        padding:0px 100px 50px 100px;
+        font-weight:400;
+        font-size:1.2rem;
+        text-align:center;
+        #singleroom_book{
+            margin-bottom:20px;
+            line-height: 30px;
+            display: flex;
+            justify-content: space-between;
+            background: var(--header_bgcolor);
+            color:var(--header_color);
+            padding: 15px;
+            border-radius: 5px;
+            
+            span{
+                display:flex;
+                align-items: center;
+            }
+           
+        }
+        #singleroom_book{
+            
+            text-align:center;
+            a{
+                text-decoration: none;
+                border:none;
+                color:var(--singlesuite_more_color);
+                background-color:var(--singlesuite_more_bgcolor);
+                padding:10px 28px;
+                border-radius:5px;
+                
+            }
+        }
+        
+        #singleroom_imagecontainer{
+            padding:30px 100px;
+            .singleroom_feature{
+                margin-bottom:6px;
+                max-height:70vh;
+                overflow: hidden;
+                display: flex;
+                align-items: flex-end;
+            }
+            .singleroom_gallery{
+                
+                padding:3px;
+                flex:1;
+                max-width:20%;
+            }
+            .singleroom_image{
+                margin-bottom:15px;
+                border-radius:5px;
+                background:var(--singleroom_image_bgcolor);
+                padding: 5px;
+                img{
+                    border-radius: 5px;
+                }
+            }
+        }
+        #singleroom_desccontainer{
+            padding-bottom:30px;
+            .singleroom_facilities{
+                color:var(--singleroom_name_color);
+                font-weight:700;
+                font-size:32px;
+            }
+        }
+    }
+    #singleroom_facilities{
+        #singleroom_facilities_header{
+
+            padding:50px 100px 25px 100px ;
+            span{
+                padding:0px 20px;
+                color:var(--singleroom_name_color);
+                font-weight:700;
+                font-size:32px;
+                display:inline-block;
+                border-bottom:2px solid #5a5a5a;
+            }
+            
+        }
+        .singleroom_facilities_item{
+            color:var(--singleroom_facilities_item_color);
+            span{
+                font-weight:500;
+                font-size:1.2rem;
+            }
+        }
+    }
+}
+
+@media (max-width:768px){
+    #singleroom{
+        background:var(--singleroom_bgcolor);
+        #singleroom_header{
+            height:calc(60vh);
+            background-position: center;
+            background-size: auto 100%;
+        }
+        #singleroom_name{
+            padding:20px 15px 15px 15px ;
+            color:var(--singleroom_name_color);
+            font-weight:600;
+            font-size:25px;
+            
+            // &::after{
+            //     position: absolute;
+            //     bottom:75px;
+            //     content: "";
+            //     height:3px;
+            //     width:100px;
+            //     left:calc(50% - 50px);
+            //     background:var(--singleroom_name_ucolor) ;
+            // }
+        }
+        #singleroom_desc{
+            padding:0px 15px 20px 15px;
+            font-weight:400;
+            font-size:1.1rem;
+            text-align:justify;
+            #singleroom_book{
+                // padding-bottom:30px;
+               
+            }
+            #singleroom_imagecontainer{
+                order: 2;
+                margin-bottom: 15px;
+                border-right:none;
+                padding:0px;
+                .singleroom_feature{
+                    margin-bottom:6px;
+                }
+                .singleroom_gallery{
+                    flex:none;
+                    width:25%;
+                }
+                .f-wrap{
+                    flex-wrap:wrap ;
+                    justify-content: center;
+                }
+                .singleroom_image{
+                    margin-bottom:15px;
+                    border-radius:5px;
+                    background:var(--singleroom_image_bgcolor);
+                    padding: 5px;
+                    img{
+                        border-radius: 5px;
+                    }
+                }
+            }
+            #singleroom_desccontainer{
+                margin-bottom: 15px;
+                padding-bottom: 15px;;
+                order:1;
+                .singleroom_facilities{
+
+                }
+            }
+           
+        }
+        #singleroom_facilities{
+            #singleroom_facilities_header{
+                text-align:center;
+                padding:25px 15px 25px 15px ;
+                span{
+                    padding:0px 20px;
+                    color:var(--singleroom_name_color);
+                    font-weight:700;
+                    font-size:32px;
+                    display:inline-block;
+                    border-bottom:2px solid #5a5a5a;
+                }
+                
+            }
+            .singleroom_facilities_item{
+                color:var(--singleroom_facilities_item_color);
+                text-align:center;
+                span{
+                    font-weight:500;
+                    font-size:1.2rem;
+                }
+            }
+        }
+    }
+}

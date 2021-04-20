@@ -1,0 +1,248 @@
+#home #home_header {
+  position: relative;
+}
+
+#home #home_header #home_carousel {
+  /* previus/next slider control*/
+}
+
+#home #home_header #home_carousel .owl-nav {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-80px);
+          transform: translateY(-80px);
+  left: 0;
+  right: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  z-index: 2;
+  /* previus slider control*/
+  /* next slider control*/
+}
+
+#home #home_header #home_carousel .owl-nav .owl_btn, #home #home_header #home_carousel .owl-nav .owl-prev, #home #home_header #home_carousel .owl-nav .owl-next {
+  outline: transparent;
+  border: none;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  /*     border-radius: 4px; */
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#home #home_header #home_carousel .owl-nav .owl_btn span, #home #home_header #home_carousel .owl-nav .owl-prev span, #home #home_header #home_carousel .owl-nav .owl-next span {
+  margin-top: -25px;
+}
+
+#home #home_header #home_carousel .owl-nav .owl-prev {
+  left: 10px;
+}
+
+#home #home_header #home_carousel .owl-nav .owl-next {
+  right: 10px;
+}
+
+#home #home_header #home_carousel .owl-dots {
+  display: none;
+}
+
+#home #home_header #home_carousel .owl_slider {
+  height: calc(100vh - 100px);
+  background-position: center;
+  background-size: 100% auto;
+}
+
+#home #home_header #book_now {
+  opacity: 0.9;
+  position: absolute;
+  left: 100px;
+  bottom: 20px;
+  right: 100px;
+  z-index: 2;
+  background: var(--header_bgcolor);
+  padding: 30px 50px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px 0px black;
+          box-shadow: 0px 0px 10px 0px black;
+}
+
+#home #home_header #book_now label {
+  color: white;
+  font-weight: 600;
+}
+
+#home #home_header #book_now input {
+  width: 100%;
+  padding: 5px 10px;
+  outline: transparent;
+  border: 1px #a1a1a1 solid;
+  border-radius: 0px;
+}
+
+#home #home_header #book_now button.check {
+  width: 100%;
+  padding: 5px 10px;
+  outline: transparent;
+  border: 1px #a1a1a1 solid;
+  border-radius: 0px;
+  background: #640066;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+#home #info {
+  background-color: var(--info_bgcolor);
+  color: var(--info_color);
+  padding: 50px;
+}
+
+#home #info .info_title {
+  line-height: 1;
+  font-weight: 700;
+  font-size: 30px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#home #info .image {
+  padding-right: 40px;
+}
+
+#home #info .about p {
+  margin-bottom: 5px;
+}
+
+#home #info .about .detail {
+  padding-top: 5px;
+}
+
+#home #info .about .detail a {
+  color: var(--info_color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#home #info .about .detail a:hover {
+  color: var(--info_hovercolor);
+}
+
+#home #other {
+  padding: 100px;
+}
+
+#home #other .other_item {
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+#home #other .other_item .other_item_image {
+  position: relative;
+  padding-bottom: 70%;
+  overflow: hidden;
+  background: bottom;
+  background-size: auto 100%;
+}
+
+#home #other .other_item .other_item_text {
+  padding: 10px;
+}
+
+#home #other .other_item .other_item_text .other_item_title {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  #home #home_header {
+    position: relative;
+  }
+  #home #home_header #home_carousel {
+    /* previus/next slider control*/
+  }
+  #home #home_header #home_carousel .owl-nav {
+    top: 35%;
+  }
+  #home #home_header #home_carousel .owl_slider {
+    height: 100vh;
+    background-position: center;
+    background-size: auto 100%;
+  }
+  #home #home_header #book_now {
+    left: 10px;
+    right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  #home #home_header #book_now .form-group {
+    margin-bottom: 10px;
+  }
+  #home #info {
+    padding: 30px 15px;
+  }
+  #home #info .info_title {
+    line-height: 1;
+    font-weight: 700;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  #home #info .about {
+    margin-top: 10px;
+  }
+  #home #info .about p {
+    text-align: justify;
+  }
+  #home #info .about .detail {
+    text-align: right;
+  }
+  #home #other {
+    padding: 50px 15px;
+  }
+  #home #other .other_item {
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    margin-bottom: 50px;
+  }
+  #home #other .other_item .other_item_image {
+    position: relative;
+    padding-bottom: 70%;
+    overflow: hidden;
+    background: bottom;
+    background-size: auto 100%;
+  }
+  #home #other .other_item .other_item_text {
+    padding: 10px;
+  }
+  #home #other .other_item .other_item_text .other_item_title {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+}
+/*# sourceMappingURL=home.css.map */

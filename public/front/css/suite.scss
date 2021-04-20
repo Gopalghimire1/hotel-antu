@@ -1,0 +1,135 @@
+#suite{
+
+    background-repeat: repeat;
+    padding:100px 0px 0px 0px;
+    background-color: var(--suite_bgcolor);
+    color: var(--suite_color);
+    // background-image:url('/front/img/pattern.png');
+    #suite_title{
+        padding:0px 100px;
+        color: var(--suite_title_color);
+        line-height:1;
+        font-weight:700;
+        font-size:48px;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom:20px;
+    }
+    #suite_desc{
+        padding:0px 100px;
+        color: var(--suite_desc_color);
+        text-align: center;
+        margin-bottom:50px;
+        font-weight:600;
+        font-size:18px;
+    }
+    .singlesuite_container{
+        background:var(--singlesuite_container_bgcolor);
+        .singlesuite{
+            // margin-bottom: 30px;
+            // overflow: hidden;
+            // position: relative;
+            position:absolute;
+            left:20px;right:20px;
+            top:50%;
+            transform: translateY(-50%);
+            .singlesuite_name{
+                font-weight:700;
+                font-size:32px;
+                color: var(--singlesuite_name_color);
+            }
+            .singlesuite_price{
+                color:var(--singlesuite_price);
+                font-size:25px;
+                font-weight:700;
+                padding:10px 0px;
+            }
+            .singlesuite_desc{
+                color: var(--singlesuite_desc_color);
+            }
+            .singlesuite_more{
+                margin-top:20px;
+                a{
+
+                    color: var(--singlesuite_more_color);
+                    background-color: var(--singlesuite_more_bgcolor);
+                    font-weight:600;
+                    padding:8px 20px;
+                    text-decoration: none;
+                    border-radius:3px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:768px){
+    #suite{
+
+        background-repeat: repeat;
+        padding:30px 0px 0px 0px 0px;
+        background-color: var(--suite_bgcolor);
+        color: var(--suite_color);
+        // background-image:url('/front/img/pattern.png');
+        #suite_title{
+            padding:0px 15px;
+            color: var(--suite_title_color);
+            line-height:1;
+            font-weight:700;
+            font-size:30px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom:20px;
+        }
+        #suite_desc{
+            padding:0px 15px;
+            color: var(--suite_desc_color);
+            text-align: center;
+            margin-bottom:20px;
+            font-weight:600;
+            font-size:15px;
+        }
+        .singlesuite_container{
+            background:var(--singlesuite_container_bgcolor);
+            // margin-top:-15px;
+            // border-top-left-radius: 15px;
+            // border-top-right-radius: 15px;
+            .singlesuite{
+                // margin-bottom: 30px;
+                // overflow: hidden;
+                // position: relative;
+                position:relative;
+                left:0;right:0;
+                top:0;
+                transform: none;
+                padding:30px 15px;
+                .singlesuite_name{
+                    font-weight:600;
+                    font-size:32px;
+                    color: var(--singlesuite_name_color);
+                }
+                .singlesuite_price{
+                    color:var(--singlesuite_price);
+                    font-size:25px;
+                    font-weight:700;
+                    padding:10px 0px;
+                }
+                .singlesuite_desc{
+                    color: var(--singlesuite_desc_color);
+                }
+                .singlesuite_more{
+                    margin-top:20px;
+                    a{
+    
+                        color: var(--singlesuite_more_color);
+                        background-color: var(--singlesuite_more_bgcolor);
+                        font-weight:600;
+                        padding:8px 20px;
+                        text-decoration: none;
+                        border-radius:3px;
+                    }
+                }
+            }
+        }
+    }
+}

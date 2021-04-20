@@ -1,0 +1,122 @@
+#singleblog_header {
+  height: 70vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  overflow: hidden;
+}
+
+#singleblog {
+  padding: 30px 100px;
+}
+
+#singleblog #singleblog_title {
+  font-weight: 700;
+  font-size: 35px;
+}
+
+#singleblog #singleblog_title #published {
+  font-size: 16px;
+  font-weight: 600;
+  padding-left: 40px;
+}
+
+#singleblog #singleblog_title #published::before {
+  content: "-";
+}
+
+#singleblog #singleblog_content {
+  padding: 20px 0px;
+}
+
+#singleblog #singleblog_content p {
+  text-indent: 50px;
+}
+
+#singleblog .other {
+  cursor: pointer;
+  padding: 8px 15px;
+  overflow: hidden;
+  overflow: hidden;
+  -webkit-column-break-inside: avoid;
+  /* Chrome, Safari */
+  /* Theoretically FF 20+ */
+  break-inside: avoid-column;
+  position: relative;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+#singleblog .other:last-child {
+  border-bottom: none;
+}
+
+#singleblog .other img {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+#singleblog .other .title a {
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 20px;
+  color: #333333;
+}
+
+@media (max-width: 768px) {
+  #singleblog_header {
+    height: auto;
+    display: block;
+  }
+  #singleblog {
+    padding: 20px 15px;
+  }
+  #singleblog #singleblog_title {
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+  }
+  #singleblog #singleblog_title #published {
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 0px;
+    text-align: right;
+  }
+  #singleblog #singleblog_title #published::before {
+    content: "-";
+  }
+  #singleblog #singleblog_content {
+    padding: 20px 0px;
+  }
+  #singleblog #singleblog_content p {
+    text-indent: 20px;
+  }
+  #singleblog .other {
+    cursor: pointer;
+    padding: 8px 15px;
+    overflow: hidden;
+    overflow: hidden;
+    -webkit-column-break-inside: avoid;
+    /* Chrome, Safari */
+    /* Theoretically FF 20+ */
+    break-inside: avoid-column;
+    position: relative;
+    border-bottom: 1px solid #d1d1d1;
+  }
+  #singleblog .other:last-child {
+    border-bottom: none;
+  }
+  #singleblog .other img {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+  #singleblog .other .title a {
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 17px;
+    color: #333333;
+  }
+}
+/*# sourceMappingURL=singleblog.css.map */

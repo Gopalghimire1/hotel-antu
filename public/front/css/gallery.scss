@@ -1,0 +1,137 @@
+#gallery{
+    min-height:100vh;
+    background:var(--gallery_bgcolor);
+    #gallery_title{
+        text-align:center;
+        padding:50px 100px 30px 100px ;
+        color:var(--gallery_title_color);
+        font-weight:600;
+        font-size:48px;
+        text-transform: uppercase;
+    }
+    #gallery_desc{
+        padding:10px 100px 30px 100px ;
+        color:var(--gallery_title_color);
+        font-weight:400;
+        font-size:20px;
+        text-align:center;
+    }
+
+    #gallery_images_blog{
+
+        padding:10px 100px 30px 100px ;
+        column-count: 3;
+        column-gap: 0px;
+        .gal_img{
+            cursor:pointer;
+            padding:10px;
+            overflow:hidden;
+            overflow:hidden;
+            -webkit-column-break-inside: avoid; /* Chrome, Safari */
+            page-break-inside: avoid;           /* Theoretically FF 20+ */
+            break-inside: avoid-column;   
+            position:relative;  
+            img{
+                box-shadow:0px 0px 10px 0px rgba(0,0,0,0.2);
+                // border-radius:5px;
+            }
+            .title{
+                position:absolute;
+                bottom:10px;
+                left:10px;
+                right:10px;
+                padding:5px 10px;
+                background:rgba(0,0,0,0.6);
+                font-weight: 600;
+                color:white;
+            }
+        }
+    }
+    #gallery_images{
+        padding:10px 100px 30px 100px ;
+        column-count: 2;
+        column-gap: 0px;
+        .gal_img{
+            padding:10px;
+            overflow:hidden;
+            overflow:hidden;
+            -webkit-column-break-inside: avoid; /* Chrome, Safari */
+            page-break-inside: avoid;           /* Theoretically FF 20+ */
+            break-inside: avoid-column;     
+            img{
+                box-shadow:0px 0px 10px 0px rgba(0,0,0,0.2);
+                border-radius:5px;
+            }
+        }
+    }
+}
+
+@media(max-width:768px){
+    #gallery{
+        
+        padding-top:50px;
+        min-height:100vh;
+        background:var(--gallery_bgcolor);
+        #gallery_title{
+            text-align:center;
+            padding:50px 15px 30px 15px ;
+            color:var(--gallery_title_color);
+            font-weight:600;
+            font-size:32px;
+            text-transform: uppercase;
+        }
+        #gallery_desc{
+            padding:0px 15px 15px 15px ;
+            color:var(--gallery_title_color);
+            font-weight:400;
+            font-size:16px;
+            text-align:center;
+        }
+    
+        #gallery_images_blog{
+            padding:10px 10px 30px 10px ;
+            column-count: 1;
+            column-gap: 0px;
+            .gal_img{
+                padding:10px;
+                overflow:hidden;
+                overflow:hidden;
+                -webkit-column-break-inside: avoid; /* Chrome, Safari */
+                page-break-inside: avoid;           /* Theoretically FF 20+ */
+                break-inside: avoid-column;   
+                position:relative;  
+                img{
+                    box-shadow:0px 0px 10px 0px rgba(0,0,0,0.2);
+                    // border-radius:5px;
+                }
+                .title{
+                    position:absolute;
+                    bottom:10px;
+                    left:10px;
+                    right:10px;
+                    padding:5px 10px;
+                    background:rgba(0,0,0,0.6);
+                    font-weight: 600;
+                    color:white;
+                }
+            }
+        }
+        #gallery_images{
+            padding:10px 10px 30px 10px ;
+            column-count: 1;
+            column-gap: 0px;
+            .gal_img{
+                padding:10px;
+                overflow:hidden;
+                overflow:hidden;
+                -webkit-column-break-inside: avoid; /* Chrome, Safari */
+                page-break-inside: avoid;           /* Theoretically FF 20+ */
+                break-inside: avoid-column;     
+                img{
+                    box-shadow:0px 0px 10px 0px rgba(0,0,0,0.2);
+                    border-radius:5px;
+                }
+            }
+        }
+    }
+}

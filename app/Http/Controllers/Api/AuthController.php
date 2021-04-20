@@ -24,4 +24,13 @@ class AuthController extends Controller
             return res::f(["Email and Password Missmatch"]);
         }
     }
+
+    public function authUser(){
+        $user = Auth::user();
+        if($user != null){
+            return res::s($user);
+        }else{
+            return res::f(["User detail is not available"]);
+        }
+    }
 }

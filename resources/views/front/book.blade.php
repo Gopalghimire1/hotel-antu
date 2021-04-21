@@ -18,7 +18,7 @@
                             @foreach ($room_types as $room_type)
                             <div class="roomtype_container">
                                 <div class="roomtype">
-                                    <img src="https://lp-cms-production.imgix.net/news/2017/10/34884794003_79b7caebee_k-e1509108009678.jpg" alt="" class="w-100">
+                                    <img src="{{ $room_type->featuredImage()->image }}" alt="" class="w-100">
                                     <div class="detail">
                                         {{$room_type['title']}}
                                         <div class="pt-2">
@@ -30,7 +30,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             @endforeach
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                                     <label for="start_date">Start Date</label>
                                     <input type="date" name="start_date" onchange="checkDate()"   id="start_date" class="form-control">
                                 </div>
-                              
+
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                         </div>
-                  
+
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -81,7 +81,7 @@
                             </div>
 
                         </div>
-                        <div class="d-flex justify-content-between"> 
+                        <div class="d-flex justify-content-between">
                             <span class="btn btn-secondary btn-lg" onclick="stepBack()">
                                 Back
                             </span>
@@ -110,11 +110,11 @@
                                 </span>
                                 <span>
                                     <span id="stay_duration">
-                                        
+
                                     </span> Nights
                                 </span>
                             </div>
-                        
+
                             <div class="d-flex justify-content-between ">
                                 <span>
                                     No of Rooms
@@ -131,7 +131,7 @@
                                 </span>
                                 <span>X
                                     <span id="room_price_view">
-                                       
+
                                     </span>
                                 </span>
                             </div>
@@ -142,7 +142,7 @@
                                 </span>
                                 <span>
                                     <span id="total_amount">
-                                       
+
                                     </span>
                                 </span>
                             </div>
@@ -195,7 +195,7 @@
         function checkDate(){
             start_date=document.getElementById('start_date').valueAsDate ;
             end_date=document.getElementById('end_date').valueAsDate ;
-         
+
             if(today>start_date){
                 // alert('Please Select Appropraite date');
                 start_date=today;
@@ -225,7 +225,7 @@
                 $('#total_amount').html(total_amount);
             }else{
                 $('#room_info_days').addClass('d-none');
-                
+
             }
         }
         function dateDiff(){
@@ -242,5 +242,5 @@
 
     </script>
 
-  
+
 @endsection

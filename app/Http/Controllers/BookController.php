@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Country;
+use App\Model\RoomType;
 
 class BookController extends Controller
 {
@@ -11,26 +12,8 @@ class BookController extends Controller
 
     public function index(Request $request){
         //get all roomtype
-        $data=[
-                [
-                    "id"=>1,
-                    "base_price"=>100,
-                    "title"=>"name1",
+        $data = RoomType::where('status',1)->get();
 
-                ],
-                [
-                    "id"=>2,
-                    "base_price"=>200,
-                    "title"=>"name2",
-
-                ],
-                [
-                    "id"=>3,
-                    "base_price"=>300,
-                    "title"=>"name3",
-
-                ],
-            ];
             if($request->filled('roomid')){
                 return view('front.book',['room_types'=>$data,'id'=>$request->roomid,'codes'=>Country::$list]);
 
@@ -41,9 +24,11 @@ class BookController extends Controller
     }
 
     public function getRoom(Request $request){
-        $data['id']=$request->id;
-        $data['base_price']=100*$request->id;
-        $data['title']="name ".$request->id;
+        $roomtype = RoomType::where('id',$request->id)->first();
+        $data['id']= $roomtype->id;
+        $data['base_price']= $roomtype->base_price;
+        $data['title'] = $roomtype->title;
+        $data['image'] = $roomtype->featuredImage()->image;
         return view('front.booking.roominfo',['room'=>(object)$data]);
     }
 }

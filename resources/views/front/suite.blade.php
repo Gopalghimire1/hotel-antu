@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{asset('front/css/suite.css')}}">
 @endsection
 @section('content')
-    
+
 <div id="suite">
     <div id="suite_title" class="playfair">
 
@@ -15,34 +15,40 @@
         soluta eaque, suscipit alias ipsum doloribus consequuntur magnam expedita, recusandae nostrum placeat deserunt
         dolores repellendus.
     </div>
-    @for ($i = 0; $i < 10; $i++)
+    @php
+        $i =0;
+    @endphp
+    @foreach ($rooms as $room)
         <div class="row m-0">
             <div class="col-md-6 p-0 {{($i%2)>0?"order-md-2":"order-md-1" }}">
-                <img src="{{ asset('front/img/singleroom.png') }}" alt="" class="w-100">
+                <img src="{{ asset($room->featuredImage()->image) }}" alt="" class="w-100">
             </div>
             <div class="col-md-6 singlesuite_container p-0 p-relative  {{($i%2)>0?"order-md-1":"order-md-2" }}" id="singlesuite_{{ $i }}">
                 <div class="singlesuite text-center" >
                     <div class="singlesuite_name playfair">
-                        hello world asdfasd sdfasd f
+                        {{ $room->title }}
                     </div>
                     <div class="singlesuite_price number">
-                       
-                            Rs. 50000/-
-                        
+
+                            Rs. {{ $room->base_price }}
+
                     </div>
                     <div class="singlesuite_desc">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor voluptatem possimus dolorem sit distinctio? A nemo blanditiis excepturi inventore! Officia omnis a officiis labore adipisci inventore reprehenderit tempora rem laboriosam!
+                        {{ $room->short_desc }}
                     </div>
                     <div class="singlesuite_more ">
-                        <a href="{{route('front.singleroom',['id'=>1])}}">
+                        <a href="{{route('front.singleroom',['id'=>$room->id])}}">
                             View In Detail
                         </a>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-    @endfor
+        @php
+            $i++;
+        @endphp
+    @endforeach
 
 </div>
 @endsection

@@ -55,7 +55,7 @@
                                   <td> {{ $room->title }} </td>
                                   <td> {{ $room->short_code }} </td>
                                   <td> Rs. {{ $room->base_price }} </td>
-                                  <td> {{$room->room->count()}} </td>
+                                  <td> {{ $room->room->count() }} </td>
                                   <td><span class="badge {{$room->status?'badge-success':'badge-danger'}}">{{$room->status?'Active':'Inactive'}}</span></td>
                                   <td>
                                       <a class="badge badge-primary" href=" {{ route('roomType.edit',$room->id) }} ">Edit</a>

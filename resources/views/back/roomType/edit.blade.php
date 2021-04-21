@@ -1,4 +1,5 @@
 @extends('back.layouts.app')
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-bs4.min.css" rel="stylesheet">
 @section('title','Room Type Edit')
 @section('content')
 
@@ -55,7 +56,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Details</label>
-                                    <textarea name="description" rows="5" placeholder="Enter details" class="form-control"> {{ old('description',$roomType->description) }}</textarea>
+                                    <textarea name="description" id="summernote" rows="5" placeholder="Enter details" class="form-control"> {{ old('description',$roomType->description) }}</textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
@@ -152,6 +153,7 @@
 
 @endsection
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-bs4.min.js"></script>
 <script>
 
     var max_fields_limit = 5;
@@ -168,5 +170,11 @@
         e.preventDefault(); $(this).parent('div').remove();
         x--;
     });
+
+    $('#summernote').summernote({
+        placeholder: 'Details',
+        tabsize: 2,
+        height: 400
+      });
     </script>
 @endsection

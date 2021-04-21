@@ -22,6 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('auth')->middleware('auth:api')->group(function () {
     Route::get('user', 'Api\AuthController@authUser');
+
     Route::post('reservation','Api\ReservationController@reservation');
+
+    Route::get('rooms', 'Api\RoomController@rooms');
+
+
 });
 

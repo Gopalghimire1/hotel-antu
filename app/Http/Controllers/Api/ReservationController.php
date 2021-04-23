@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Guest;
 use App\Models\Reservation;
 use App\Models\ReservationNight;
 use App\Models\User;
@@ -51,5 +52,28 @@ class ReservationController extends Controller
             $night->save();
         }
         return response()->json($user);
+    }
+
+    public function guest(Request $request){
+        // dd($request->all());
+        $guest = new Guest();
+        $guest->email = $request->email;
+        $guest->name = $request->name;
+        $guest->phone = $request->phone;
+        $guest->address = $request->address;
+        $guest->nationality = $request->nationality;
+        $guest->doc_type = $request->identity_type;
+        $guest->id_number = $request->id_number;
+        $guest->id_issue_date = $request->id_issue_date;
+        $guest->id_expire_date = $request->id_expire_date;
+        $guest->id_issued_place = $request->id_issued_place;
+        $guest->card_no = $request->card_no;
+        $guest->card_expire_date = $request->card_expire_date;
+        $guest->ccv = $request->ccv;
+        $guest->check_in = $request->check_in;
+        $guest->adults = $request->adults;
+        $guest->child = $request->child;
+        $guest->save();
+        return response()->json($guest);
     }
 }

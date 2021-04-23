@@ -27,6 +27,6 @@ Route::prefix('auth')->middleware('auth:api')->group(function () {
 
     Route::get('rooms', 'Api\RoomController@rooms');
 
-
+    Route::post('guest','Api\ReservationController@guest');
 });
 

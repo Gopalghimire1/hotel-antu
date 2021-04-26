@@ -23,11 +23,17 @@ class ReservationController extends Controller
             $hastoken = User::where('unique_id',$tooken)->count()>0;
         }
 
-        $user = new User();
-        $user->password = bcrypt('guest123');
-        $user->unique_id = $tooken;
-        $user->role = 2;
-        $user->save();
+        if($request->has('user_id')){
+            $user = User::where('id',$request->user_id)->first();
+        }else{
+            $user = new User();
+            $user->password = bcrypt('guest123');
+            $user->unique_id = $tooken;
+            $user->role = 2;
+            $user->save();
+        }
+
+
         $guest = new Guest();
         $guest->email = $request->email;
         $guest->name = $request->name;
@@ -77,11 +83,10 @@ class ReservationController extends Controller
         }
         return response()->json($guest);
     }
+    
 
     public function guest(Request $request){
         // dd($request->all());
-
-
     }
 
     public function paidServices(){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Guest;
+use App\Models\PaidService;
 use App\Models\Reservation;
 use App\Models\ReservationNight;
 use App\Models\User;
@@ -75,5 +76,10 @@ class ReservationController extends Controller
         $guest->child = $request->child;
         $guest->save();
         return response()->json($guest);
+    }
+
+    public function paidServices(){
+        $paidServices = PaidService::where('status',1)->get();
+        return response()->json($paidServices);
     }
 }

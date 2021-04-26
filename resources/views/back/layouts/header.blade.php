@@ -105,6 +105,10 @@
                 <a href="{{ route('admin.blog.home',1) }}" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Blogs</span></a>
             </li>
 
+            <li class="menu-item">
+                <a href="" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Users</span></a>
+            </li>
+
             <!-- .menu-header -->
             <li class="menu-header">Interfaces </li><!-- /.menu-header -->
             <!-- .menu-item -->

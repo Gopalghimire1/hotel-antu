@@ -115,4 +115,9 @@ Route::group([ 'middleware' => 'role:super','prefix'=>'admin'], function(){
             Route::get('create','Admin\ReservationController@create')->name('create');
         });
 
+
+        Route::prefix('user')->name('user.')->group(function () {
+
+        });
+
 });

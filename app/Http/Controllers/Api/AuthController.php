@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\ApiData as res;
+use App\Models\Guest;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -32,5 +34,15 @@ class AuthController extends Controller
         }else{
             return res::f(["User detail is not available"]);
         }
+    }
+
+    public function oldUser(){
+        $users = User::where('role',2)->get();
+        $guest = [];
+        foreach ($users as  $value) {
+            $g = Guest::where('user_id',$value->id)->with('user')->first();
+            array_push($guest,$g);
+        }
+        return res::s($guest);
     }
 }

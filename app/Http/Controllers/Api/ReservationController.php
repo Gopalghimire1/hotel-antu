@@ -71,7 +71,9 @@ class ReservationController extends Controller
 
         foreach ($request->paid_service_id as $paid) {
             $paid = new ReservationPaidService();
-
+            $paid->reservation_id = $resrv->id;
+            $paid->pad_service_id = $paid;
+            $paid->save();
         }
         return response()->json($guest);
     }

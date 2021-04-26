@@ -1,5 +1,5 @@
 @extends('back.layouts.app')
-@section('title','Guests Create')
+@section('title','User Create')
 @section('content')
 
 <main class="app-main">
@@ -13,9 +13,9 @@
                         <!-- .card-header -->
                         <div class="card-header">
                             <div class="d-md-flex align-items-md-start">
-                                <h3 class="page-title mr-sm-auto"> Create Guest </h3><!-- .btn-toolbar -->
+                                <h3 class="page-title mr-sm-auto"> Create User </h3><!-- .btn-toolbar -->
                                 <div class="dt-buttons btn-group">
-                                    <a href="{{ route('user.index') }}" class="btn btn-primary">Guest List</a>
+                                    <a href="{{ route('user.index') }}" class="btn btn-primary">User List</a>
                                 </div><!-- /.btn-toolbar -->
                             </div>
                         </div><!-- /.card-header -->
@@ -79,7 +79,7 @@
                                         </div>
                                      </div>
                                      <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-2">
                                             <label for="">Sex <span style="color:red;">*</span></label>
                                             <select name="sex" class="form-control">
                                                 <option value="M">Male</option>
@@ -87,52 +87,21 @@
                                                 <option value="O">Other</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-6">
                                             <label for="">Address <span style="color:red;">*</span></label>
                                             <input type="text" name="address" class="form-control" placeholder="Enter address">
                                         </div>
-                                     </div>
-                                     <br>
-                                     <div class="row">
-                                            <div class="col-md-4">
-                                                <label for="id">ID NO</label>
-                                                <input type="text" name="id_number" class="form-control" placeholder="Enter id number">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="">Type of id </label>
-                                                <input type="text" name="id_type" class="form-control" placeholder="Enter id type">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="">Upload id card </label>
-                                                <input type="file" name="id_card_image" class="form-control">
-                                            </div>
-                                     </div>
-                                     <br>
-                                     <div class="row">
-                                            <div class="col-md-6">
-                                                <label for="">Date of birth <span style="color:red;">*</span></label>
-                                                <input type="date" name="dob" class="form-control">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">Upload image</label>
-                                                <input type="file" name="picture" class="form-control">
-                                            </div>
-                                     </div>
-                                     <br>
-                                     <div class="row">
-                                            <div class="col-md-12">
-                                                <label for="">Remarks</label>
-                                                <textarea name="remarks" rows="5" class="form-control" placeholder="Enter remarks"></textarea>
-                                            </div>
-                                     </div>
-                                     <br>
-                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                               <span>VIP :</span> <!-- .switcher-control -->
-                                               <label class="switcher-control switcher-control-lg"><input type="checkbox" name="vip" class="switcher-input" checked=""> <span class="switcher-indicator"></span> <span class="switcher-label-on">ON</span> <span class="switcher-label-off">OFF</span></label> <!-- /.switcher-control -->
-                                            </div>
+                                        <div class="col-md-6">
+                                            <label for="">Address <span style="color:red;">*</span></label>
+                                            <select name="role" class="form-control">
+                                                <option ></option>
+                                            </select>
                                         </div>
+                                     </div>
+                                     <br>
+
+                                     <br>
+                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="list-group-item d-flex justify-content-between align-items-center">
                                                 <span>Status :</span> <!-- .switcher-control -->

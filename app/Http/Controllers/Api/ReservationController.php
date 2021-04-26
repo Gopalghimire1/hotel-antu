@@ -10,54 +10,24 @@ use App\Models\ReservationNight;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\ApiData as res;
+use App\Models\ReservationPaidService;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
     public function reservation(Request $request){
         // dd($request->all());
-        $user = new User();
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->phone = $request->phone;
-        $user->role = 2;
-        $user->password = bcrypt('user');
-        $user->dob = $request->dob;
-        $user->address = $request->address;
-        $user->sex = $request->sex;
-        $user->id_type = $request->id_type;
-        $user->id_number = $request->id_number;
-        $user->save();
-
-        $resrv = new Reservation();
-        $resrv->uid = $user->id_number;
-        $resrv->date = $request->date;
-        $resrv->user_id = $user->id;
-        $resrv->room_type_id = $request->room_type_id;
-        $resrv->adults = $request->adults;
-        $resrv->kids = $request->kids;
-        $resrv->check_in = $request->check_in;
-        $resrv->check_out = $request->check_out;
-        $resrv->number_of_room = $request->number_of_room;
-        $resrv->status = $request->status;
-        $resrv->save();
-
-        foreach ($request->room_id as  $id) {
-            $night = new ReservationNight();
-            $night->reservation_id = $resrv->id;
-            $night->room_id = $id;
-            $night->date = $request->date;
-            $night->check_in = $request->check_in;
-            $night->check_out = $request->check_out;
-            $night->price = $request->price;
-            $night->save();
+        $hastoken=true;
+        while ($hastoken) {
+            $tooken = mt_rand(111111,999999);
+            $hastoken = User::where('unique_id',$tooken)->count()>0;
         }
-        return response()->json($user);
-    }
 
-    public function guest(Request $request){
-        // dd($request->all());
+        $user = new User();
+        $user->password = bcrypt('guest123');
+        $user->unique_id = $tooken;
+        $user->role = 2;
+        $user->save();
         $guest = new Guest();
         $guest->email = $request->email;
         $guest->name = $request->name;
@@ -75,8 +45,41 @@ class ReservationController extends Controller
         $guest->check_in = $request->check_in;
         $guest->adults = $request->adults;
         $guest->child = $request->child;
+        $guest->user_id = $user->id;
         $guest->save();
+
+        $resrv = new Reservation();
+        $resrv->date = $request->date;
+        $resrv->user_id = $user->id;
+        $resrv->adults = $request->adults;
+        $resrv->kids = $request->kids;
+        $resrv->check_in = $request->check_in;
+        $resrv->number_of_room = $request->number_of_room;
+        $resrv->status = 1;
+        $resrv->guest_id = $guest->id;
+        $resrv->save();
+
+        foreach ($request->room_id as  $id) {
+            $night = new ReservationNight();
+            $night->reservation_id = $resrv->id;
+            $night->room_id = $id;
+            $night->date = Carbon::now();
+            $night->check_in = $request->check_in;
+            $night->price = $request->price;
+            $night->save();
+        }
+
+        foreach ($request->paid_service_id as $paid) {
+            $paid = new ReservationPaidService();
+
+        }
         return response()->json($guest);
+    }
+
+    public function guest(Request $request){
+        // dd($request->all());
+
+
     }
 
     public function paidServices(){

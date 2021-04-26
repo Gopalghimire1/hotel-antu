@@ -32,6 +32,8 @@ class CreateGuestsTable extends Migration
             $table->integer('adults')->default(0);
             $table->integer('child')->default(0);
             $table->boolean('status')->default(1);
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

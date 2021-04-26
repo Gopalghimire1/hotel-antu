@@ -16,10 +16,8 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $user = new User();
-        $user->username = 'Super Admin';
         $user->email = 'admin@admin.com';
         $user->password = bcrypt('admin');
-        $user->dob = Carbon::now();
         $user->role = 0;
         $user->save();
     }

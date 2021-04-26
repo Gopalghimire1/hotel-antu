@@ -19,7 +19,7 @@ class CreateReservationNightsTable extends Migration
             $table->unsignedInteger('room_id');
             $table->date('date');
             $table->dateTime('check_in');
-            $table->dateTime('check_out');
+            $table->dateTime('check_out')->nullable();
             $table->float('price');
             $table->timestamps();
             $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('cascade');

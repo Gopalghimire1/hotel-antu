@@ -15,13 +15,12 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('uid')->unique();
             $table->timestamp('date');
             $table->unsignedInteger('user_id');
             $table->integer('adults')->default(1);
             $table->integer('kids')->default(0);
             $table->date('check_in');
-            $table->date('check_out');
+            $table->date('check_out')->nullable();
             $table->integer('number_of_room')->default(1);
             $table->integer('status')->default(0);
             $table->timestamps();

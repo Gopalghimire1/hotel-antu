@@ -26,8 +26,6 @@ class UserController extends Controller
         'address'=>'required|string',
         'sex'=>'required|string',
         'password'=>'required|string',
-        'picture'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'id_card_image'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
        ]);
 
        $guests = new User();
@@ -39,24 +37,16 @@ class UserController extends Controller
        $guests->dob = $request->dob;
        $guests->address = $request->address;
        $guests->sex = $request->sex;
-       $guests->role = 2;
-       if($request->has('picture')){
-            $imageName = time().'.'.$request->picture->extension();
-            $request->picture->move(public_path('back/images/guest/pic'), $imageName);
-            $guests->picture = $imageName;
-       }
+       $guests->role = $request->role;
+
        $guests->password = bcrypt($request->password);
        $guests->id_type = $request->id_type;
        $guests->id_number = $request->id_number;
-       if($request->has('id_card_image')){
-            $imageName = time().'.'.$request->id_card_image->extension();
-            $request->id_card_image->move(public_path('back/images/guest/card'), $imageName);
-            $guests->id_card_image = $imageName;
-       }
+
        $guests->remarks = $request->remarks;
        $guests->vip = $request->has('vip')?1:0;
        $guests->status = $request->has('status')?1:0;
-    //    dd($guests);
+       //   dd($guests);
        $guests->save();
        return redirect()->back()->with('success','User has been saved successful');
     }

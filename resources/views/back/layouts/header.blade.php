@@ -63,10 +63,6 @@
              <a href="{{ route('reservation.index') }}" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Reservation</span></a>
            </li><!-- /.menu-item -->
 
-            <!-- .menu-item -->
-            <li class="menu-item">
-              <a href="{{ route('guest.list') }}" class="menu-link"><span class="menu-icon oi oi-person"></span> <span class="menu-text">Guests</span></a>
-            </li><!-- /.menu-item -->
 
             <!-- .menu-item -->
             <li class="menu-item has-child">
@@ -106,7 +102,7 @@
             </li>
 
             <li class="menu-item">
-                <a href="" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Users</span></a>
+                <a href="{{ route('user.index')}}" class="menu-link"><span class="menu-icon oi oi-person"></span> <span class="menu-text">Users</span></a>
             </li>
 
             <!-- .menu-header -->

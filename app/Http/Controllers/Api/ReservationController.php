@@ -9,6 +9,7 @@ use App\Models\Reservation;
 use App\Models\ReservationNight;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\ApiData as res;
 
 class ReservationController extends Controller
 {
@@ -80,6 +81,6 @@ class ReservationController extends Controller
 
     public function paidServices(){
         $paidServices = PaidService::where('status',1)->get();
-        return response()->json($paidServices);
+        return  res::S($paidServices);
     }
 }

@@ -43,10 +43,8 @@ Route::match(['get', 'post'], 'logout', 'AuthController@logout')->name('logout')
 Route::group([ 'middleware' => 'role:super','prefix'=>'admin'], function(){
 
         Route::get('','Admin\AdminController@index')->name('super.dashboard');
-       // guest route
-        Route::get('/guests','Admin\GuestController@index')->name('guest.list');
-        Route::get('/guest/create','Admin\GuestController@create')->name('guest.create');
-        Route::post('/guest/store','Admin\GuestController@store')->name('guest.store');
+
+
         Route::resource('amenities', 'Admin\AmenitiesController');
         Route::resource('floors', 'Admin\FloorsController');
 
@@ -110,14 +108,18 @@ Route::group([ 'middleware' => 'role:super','prefix'=>'admin'], function(){
         });
 
 
+
         Route::prefix('reservation')->name('reservation.')->group(function () {
             Route::get('','Admin\ReservationController@index')->name('index');
             Route::get('create','Admin\ReservationController@create')->name('create');
         });
 
 
-        Route::prefix('user')->name('user.')->group(function () {
 
+        Route::prefix('user')->name('user.')->group(function () {
+            Route::get('','Admin\UserController@index')->name('index');
+            Route::get('create','Admin\UserController@create')->name('create');
+            Route::post('store','Admin\UserController@store')->name('store');
         });
 
 });

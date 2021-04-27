@@ -86,17 +86,16 @@ class ReservationController extends Controller
 
 
     public function reservationList(){
-        $rev = Reservation::latest()->with('guest')->get();
-        $reservationNight = [];
-        $reservationPaidService = [];
-        foreach ($rev as $value) {
-            $night = ReservationNight::where('reservation_id',$value->id)->with('room')->get();
-            $paid = ReservationPaidService::where('reservation_id',$value->id)->with('paid_service')->get();
-            array_push($reservationNight,$night);
-            array_push($reservationPaidService,$paid);
-        }
+        $rev = Reservation::join('guests','guests.id','=','reservations.guest_id')->where('reservations.check_out',null)->select('reservations.id','reservations.check_in','reservations.adults','reservations.kids','reservations.number_of_room','guests.name')->orderBy('reservations.id','desc')->get();
+        return  res::S($rev);
+    }
 
-        return  res::S(['reservation'=>$rev,'reservation_night'=>$reservationNight,'reservation_paid_services'=>$reservationPaidService]);
+
+    public function singleReservation($id){
+            $rev = Reservation::where('id',$id)->with('guest')->first();
+            $night = ReservationNight::where('reservation_id',$rev->id)->with('room')->get();
+            $paid = ReservationPaidService::where('reservation_id',$rev->id)->with('paid_service')->get();
+            return  res::S(['reservation'=> $rev,'reservation_night'=>$night,'reservation_paid_service'=>$paid]);
     }
 
     public function paidServices(){

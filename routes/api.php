@@ -27,6 +27,8 @@ Route::prefix('auth')->middleware('auth:api')->group(function () {
     Route::post('reservation','Api\ReservationController@reservation');
     Route::get('reservations','Api\ReservationController@reservationList');
 
+    Route::get('reservation/{id}','Api\ReservationController@singleReservation');
+
     Route::get('rooms', 'Api\RoomController@rooms');
 
     Route::post('guest','Api\ReservationController@guest');

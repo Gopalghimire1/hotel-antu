@@ -68,12 +68,14 @@ class ReservationController extends Controller
 
         foreach ($request->room_id as  $id) {
             $room = Room::where('id',$id)->first();
+            $room->status = 2;
             $night = new ReservationNight();
             $night->reservation_id = $resrv->id;
             $night->room_id = $id;
             $night->date = Carbon::now();
             $night->check_in = $request->check_in;
             $night->price = $room->type->base_price;
+            $room->save();
             $night->save();
         }
 
@@ -88,8 +90,9 @@ class ReservationController extends Controller
 
 
     public function reservationList(){
+        $reserved = Room::where('status',2)->count();
         $rev = Reservation::join('guests','guests.id','=','reservations.guest_id')->join('users','users.id','=','reservations.user_id')->join('reservation_nights','reservations.id','=','reservation_nights.reservation_id')->join('rooms','rooms.id','=','reservation_nights.room_id')->join('room_types','room_types.id','=','rooms.room_type_id')->where('reservations.check_out',null)->select('reservations.id','reservations.check_in','reservations.adults','reservations.kids','reservations.number_of_room','guests.name','users.unique_id','reservation_nights.room_id','rooms.number','room_types.title','room_types.base_price')->orderBy('reservations.id','desc')->get();
-        return  res::S($rev);
+        return  res::S(['reserved_room'=>$reserved,'reservation_list'=>$rev,'']);
     }
 
 

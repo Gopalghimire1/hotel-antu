@@ -23,8 +23,8 @@ class ReservationController extends Controller
             $hastoken = User::where('unique_id',$tooken)->count()>0;
         }
 
-        if($request->has('user_id')){
-            $user = User::where('id',$request->user_id)->first();
+        if($request->olduser == true){
+            $user = User::where('unique_id',$request->unique_id)->first();
         }else{
             $user = new User();
             $user->password = bcrypt('guest123');
@@ -83,7 +83,7 @@ class ReservationController extends Controller
         }
         return response()->json($guest);
     }
-    
+
 
     public function guest(Request $request){
         // dd($request->all());

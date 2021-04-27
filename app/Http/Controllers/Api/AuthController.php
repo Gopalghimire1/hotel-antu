@@ -36,13 +36,9 @@ class AuthController extends Controller
         }
     }
 
-    public function oldUser(){
-        $users = User::where('role',2)->get();
-        $guest = [];
-        foreach ($users as  $value) {
-            $g = Guest::where('user_id',$value->id)->with('user')->first();
-            array_push($guest,$g);
-        }
+    public function oldUser(Request $request){
+        $user = User::where('role',2)->where('unique_id',$request->unique_id)->first();
+        $guest = Guest::where('user_id',$user->id)->with('user')->first();
         return res::s($guest);
     }
 }

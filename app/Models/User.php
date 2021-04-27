@@ -53,6 +53,6 @@ class User extends Authenticatable
     }
 
     public function guest(){
-        return $this->belongsTo(Guest::class,'user_id');
+        return $this->belongsTo(Guest::class);
     }
 }

@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('auth')->middleware('auth:api')->group(function () {
     Route::get('user', 'Api\AuthController@authUser');
-    Route::get('old-user','Api\AuthController@oldUser');
+    Route::post('old-user','Api\AuthController@oldUser');
 
     Route::post('reservation','Api\ReservationController@reservation');
 

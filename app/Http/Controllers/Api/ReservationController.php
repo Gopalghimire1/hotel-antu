@@ -16,7 +16,7 @@ use Carbon\Carbon;
 class ReservationController extends Controller
 {
     public function reservation(Request $request){
-        // dd($request->all());
+        // dd($request->paid_service_id);
         $hastoken=true;
         while ($hastoken) {
             $tooken = mt_rand(111111,999999);
@@ -75,10 +75,10 @@ class ReservationController extends Controller
             $night->save();
         }
 
-        foreach ($request->paid_service_id as $paid) {
+        foreach ($request->paid_service_id as $value) {
             $paid = new ReservationPaidService();
             $paid->reservation_id = $resrv->id;
-            $paid->pad_service_id = $paid;
+            $paid->pad_service_id = $value;
             $paid->save();
         }
         return response()->json($guest);

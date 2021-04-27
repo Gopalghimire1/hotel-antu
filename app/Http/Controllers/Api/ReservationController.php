@@ -58,7 +58,7 @@ class ReservationController extends Controller
         $resrv->date = $request->date;
         $resrv->user_id = $user->id;
         $resrv->adults = $request->adults;
-        $resrv->kids = $request->kids;
+        $resrv->kids = $request->child;
         $resrv->check_in = $request->check_in;
         $resrv->number_of_room = $request->number_of_room;
         $resrv->status = 1;

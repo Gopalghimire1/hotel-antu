@@ -85,8 +85,18 @@ class ReservationController extends Controller
     }
 
 
-    public function guest(Request $request){
-        // dd($request->all());
+    public function reservationList(){
+        $rev = Reservation::latest()->with('guest')->get();
+        $reservationNight = [];
+        $reservationPaidService = [];
+        foreach ($rev as $value) {
+            $night = ReservationNight::where('reservation_id',$value->id)->with('room')->get();
+            $paid = ReservationPaidService::where('reservation_id',$value->id)->with('paid_service')->get();
+            array_push($reservationNight,$night);
+            array_push($reservationPaidService,$paid);
+        }
+
+        return  res::S(['reservation'=>$rev,'reservation_night'=>$reservationNight,'reservation_paid_services'=>$reservationPaidService]);
     }
 
     public function paidServices(){

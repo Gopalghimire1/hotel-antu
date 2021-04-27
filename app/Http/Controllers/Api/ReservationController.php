@@ -10,6 +10,7 @@ use App\Models\ReservationNight;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\ApiData as res;
+use App\Model\Room;
 use App\Models\ReservationPaidService;
 use Carbon\Carbon;
 
@@ -66,12 +67,13 @@ class ReservationController extends Controller
         $resrv->save();
 
         foreach ($request->room_id as  $id) {
+            $room = Room::where('id',$id)->first();
             $night = new ReservationNight();
             $night->reservation_id = $resrv->id;
             $night->room_id = $id;
             $night->date = Carbon::now();
             $night->check_in = $request->check_in;
-            $night->price = $request->price;
+            $night->price = $room->type->base_price;
             $night->save();
         }
 

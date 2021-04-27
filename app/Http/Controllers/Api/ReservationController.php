@@ -88,7 +88,7 @@ class ReservationController extends Controller
 
 
     public function reservationList(){
-        $rev = Reservation::join('guests','guests.id','=','reservations.guest_id')->where('reservations.check_out',null)->select('reservations.id','reservations.check_in','reservations.adults','reservations.kids','reservations.number_of_room','guests.name')->orderBy('reservations.id','desc')->get();
+        $rev = Reservation::join('guests','guests.id','=','reservations.guest_id')->join('users','users.id','=','reservations.user_id')->join('reservation_nights','reservations.id','=','reservation_nights.reservation_id')->join('rooms','rooms.id','=','reservation_nights.room_id')->join('room_types','room_types.id','=','rooms.room_type_id')->where('reservations.check_out',null)->select('reservations.id','reservations.check_in','reservations.adults','reservations.kids','reservations.number_of_room','guests.name','users.unique_id','reservation_nights.room_id','rooms.number','room_types.title','room_types.base_price')->orderBy('reservations.id','desc')->get();
         return  res::S($rev);
     }
 

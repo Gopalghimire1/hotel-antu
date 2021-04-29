@@ -26,11 +26,42 @@
                                    <th>Full Name</th>
                                    <th>Email</th>
                                    <th>Phone</th>
-                                   <th>VIP</th>
-                                   <th>status</th>
+                                   <th>Address</th>
+                                   <th>DOB</th>
+                                   <th>Gender</th>
+                                   <th>Role</th>
                                    <th>Action</th>
                                </tr>
 
+                               @foreach ($employees as $emp)
+                                   <tr>
+                                       <td>
+                                           {{$emp->first_name}} {{$emp->last_name}}
+                                       </td>
+                                       <td>
+                                           {{$emp->email}}
+                                       </td>
+                                       <td>
+                                           {{$emp->phone}}
+                                       </td>
+                                       <td>
+                                            {{$emp->address}}
+                                        </td>
+                                        <td>
+                                            {{$emp->dob}}
+                                        </td>
+                                        <td>
+                                            {{$emp->sex}}
+                                        </td>
+                                        <td>
+                                            {{ \App\Role::roles[$emp->user->role]}}
+                                        </td>
+                                       <td>
+                                            <a href="{{route('user.edit',['employee'=>$emp->id])}}">Edit</a>
+                                            <button class="btn btn-link" onclick="initPasswordChange({{$emp->id}})">change password</button>
+                                       </td>
+                                   </tr>
+                               @endforeach
                                <tr>
 
                                </tr>
@@ -43,5 +74,5 @@
           </div>
         </div>
 </main>
-
+@include("back.users.changepass")
 @endsection

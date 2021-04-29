@@ -20,18 +20,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('auth')->middleware('auth:api')->group(function () {
-    Route::get('user', 'Api\AuthController@authUser');
-    Route::post('old-user','Api\AuthController@oldUser');
-
-    Route::post('reservation','Api\ReservationController@reservation');
-    Route::get('reservations','Api\ReservationController@reservationList');
-
-    Route::get('reservation/{id}','Api\ReservationController@singleReservation');
-
+Route::middleware('auth:api')->group(function () {
+    Route::post('old-guest','Api\AuthController@oldUser');
     Route::get('rooms', 'Api\RoomController@rooms');
-
     Route::post('guest','Api\ReservationController@guest');
     Route::get('paid-services','Api\ReservationController@paidServices');
+});
+Route::prefix("reservations")->middleware('auth:api')->group(function () {
+    Route::post('add','Api\ReservationController@reservation');
+    Route::get('','Api\ReservationController@reservationList');
+    Route::get('single/{id}','Api\ReservationController@singleReservation');
+    Route::get('all','Api\ReservationController@all');
+});
+Route::prefix('auth')->middleware('auth:api')->group(function () {
+    Route::get('user', 'Api\AuthController@authUser');
+
 });
 

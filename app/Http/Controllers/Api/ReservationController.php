@@ -17,6 +17,7 @@ use Carbon\Carbon;
 class ReservationController extends Controller
 {
     public function reservation(Request $request){
+        // dd($request);
         // dd($request->paid_service_id);
         $hastoken=true;
         while ($hastoken) {
@@ -88,17 +89,49 @@ class ReservationController extends Controller
         return response()->json($guest);
     }
 
+    public function all(Request $request){
+  
+        $data=[];
+        $rev = Reservation::join('guests','guests.id','=','reservations.guest_id')->join('users','users.id','=','reservations.user_id')->select('reservations.id','reservations.check_in','reservations.adults','reservations.kids','reservations.number_of_room','guests.name','users.unique_id','reservations.check_out')->orderBy('reservations.id','desc')->get();
+        foreach($rev as $r){
+            $r->rooms=Room::join('reservation_nights',"reservation_nights.room_id",'=',"rooms.id")
+            ->join('room_types','room_types.id','=','rooms.room_type_id')
+            ->where('reservation_nights.reservation_id',$r->id)
+            ->select("rooms.number","room_types.title")
+            ->get();
+            array_push($data,$r);
+        }
 
+        
+        return  res::S(['reservation_list'=>$data]);
+    }
     public function reservationList(){
-        $reserved = Room::where('status',2)->count();
-        $rev = Reservation::join('guests','guests.id','=','reservations.guest_id')->join('users','users.id','=','reservations.user_id')->join('reservation_nights','reservations.id','=','reservation_nights.reservation_id')->join('rooms','rooms.id','=','reservation_nights.room_id')->join('room_types','room_types.id','=','rooms.room_type_id')->where('reservations.check_out',null)->select('reservations.id','reservations.check_in','reservations.adults','reservations.kids','reservations.number_of_room','guests.name','users.unique_id','reservation_nights.room_id','rooms.number','room_types.title','room_types.base_price')->orderBy('reservations.id','desc')->get();
-        return  res::S(['reserved_room'=>$reserved,'reservation_list'=>$rev,'']);
+  
+        $data=[];
+        $rev = Reservation::join('guests','guests.id','=','reservations.guest_id')->join('users','users.id','=','reservations.user_id')->where('reservations.check_out',null)->select('reservations.id','reservations.check_in','reservations.adults','reservations.kids','reservations.number_of_room','guests.name','users.unique_id')->orderBy('reservations.id','desc')->get();
+        
+        foreach($rev as $r){
+            $r->rooms=Room::join('reservation_nights',"reservation_nights.room_id",'=',"rooms.id")
+            ->join('room_types','room_types.id','=','rooms.room_type_id')
+            ->where('reservation_nights.reservation_id',$r->id)
+            ->select("rooms.number","room_types.title")
+            ->get();
+            array_push($data,$r);
+        }
+        return  res::S(['reservation_list'=>$data]);
     }
 
 
     public function singleReservation($id){
             $rev = Reservation::where('id',$id)->with('guest')->first();
-            $night = ReservationNight::where('reservation_id',$rev->id)->with('room')->get();
+            $rev->unique_id=$rev->user->unique_id;
+            $night = ReservationNight::join('rooms','rooms.id','=','reservation_nights.room_id')
+                    ->join('room_types','room_types.id','=','rooms.room_type_id')
+                    ->join('room_type_images','room_type_images.room_type_id','=','room_types.id')
+                    ->select('rooms.number','room_type_images.image','room_types.title','room_types.base_price')
+                    ->where('reservation_nights.reservation_id',$rev->id)
+                    ->where('room_type_images.featured',1)
+                    ->get();
             $paid = ReservationPaidService::where('reservation_id',$rev->id)->with('paid_service')->get();
             return  res::S(['reservation'=> $rev,'reservation_night'=>$night,'reservation_paid_service'=>$paid]);
     }

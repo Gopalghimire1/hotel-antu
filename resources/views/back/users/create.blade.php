@@ -53,64 +53,58 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="name">Username <span style="color:red;">*</span></label>
-                                            <input type="text" name="username" class="form-control" placeholder="Enter username">
+                                            <label for="name">Email <span style="color:red;">*</span></label>
+                                             <input type="email" name="email" class="form-control" placeholder="Enter email">
                                         </div>
                                     </div>
-                                 </div>
-                                 <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                               <label for="name">Password <span style="color:red;">*</span></label>
-                                               <input type="password" name="password" class="form-control" placeholder="password" >
-                                            </div>
+                                    <div class="col-md-4">
+                                        <label for="">Address <span style="color:red;">*</span></label>
+                                        <input type="text" name="address" class="form-control" placeholder="Enter address">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="phone">Phone <span style="color:red;">*</span></label>
+                                            <input type="number" name="phone" class="form-control" placeholder="Enter phone number">
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="name">Email <span style="color:red;">*</span></label>
-                                                 <input type="email" name="email" class="form-control" placeholder="Enter email">
-                                            </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                           <label for="name">Password <span style="color:red;">*</span></label>
+                                           <input type="password" name="password" class="form-control" placeholder="password" >
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="phone">Phone <span style="color:red;">*</span></label>
-                                                <input type="number" name="phone" class="form-control" placeholder="Enter phone number">
-                                            </div>
-                                        </div>
+                                    </div>
+                                       
                                      </div>
                                      <div class="row">
                                         <div class="col-md-2">
-                                            <label for="">Sex <span style="color:red;">*</span></label>
+                                            <label for="">Gender <span style="color:red;">*</span></label>
                                             <select name="sex" class="form-control">
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
                                                 <option value="O">Other</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="">Address <span style="color:red;">*</span></label>
-                                            <input type="text" name="address" class="form-control" placeholder="Enter address">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="name">DOB <span style="color:red;">*</span></label>
+                                                <input type="text" name="dob" class="form-control" placeholder="Date Of Birth" >
+                                             </div>
                                         </div>
+                                        
                                         <div class="col-md-6">
-                                            <label for="">Address <span style="color:red;">*</span></label>
+                                            <label for="">Role <span style="color:red;">*</span></label>
                                             <select name="role" class="form-control">
-                                                <option ></option>
+                                                @php
+                                                    $i=0;
+                                                @endphp
+                                                @foreach (\App\Role::roles as $role)
+                                                    <option value="{{$i++}}">{{$role}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
-                                     </div>
-                                     <br>
-
-                                     <br>
-                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                                <span>Status :</span> <!-- .switcher-control -->
-                                                <label class="switcher-control switcher-control-lg"><input type="checkbox" name="status" class="switcher-input" checked=""> <span class="switcher-indicator"></span> <span class="switcher-label-on">ON</span> <span class="switcher-label-off">OFF</span></label> <!-- /.switcher-control -->
-                                            </div>
-                                        </div>
-                                     </div>
+                                     </div>                                  
                                      <hr>
-                                     <button class="btn btn-primary btn-block">SAVE ITEMS</button>
+                                     <button class="btn btn-primary btn-block">SAVE USER</button>
                               </fieldset>
                              </form>
                         </div><!-- /.card-body -->

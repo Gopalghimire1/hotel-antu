@@ -120,6 +120,8 @@ Route::group([ 'middleware' => 'role:super','prefix'=>'admin'], function(){
             Route::get('','Admin\UserController@index')->name('index');
             Route::get('create','Admin\UserController@create')->name('create');
             Route::post('store','Admin\UserController@store')->name('store');
+            Route::match(['get','post'],'edit/{employee}','Admin\UserController@edit')->name('edit');
+            Route::match(['get','post'],'change-pass','Admin\UserController@changePass')->name('change-pass');
         });
 
 });

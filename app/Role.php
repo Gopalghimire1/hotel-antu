@@ -10,4 +10,12 @@ class Role{
         "Kitchen",
         "House Keeping"
     ];
+
+    const hk_status=[
+        "Clean",
+        "Dirty",
+        "Requested",
+        "Scheduled",
+        "Unknown"
+    ];
 }

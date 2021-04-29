@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\ApiData as res;
+use App\Models\Employee;
 use App\Models\Guest;
 use App\Models\User;
 
@@ -40,5 +41,14 @@ class AuthController extends Controller
         $user = User::where('role',2)->where('unique_id',$request->unique_id)->first();
         $guest = Guest::where('user_id',$user->id)->with('user')->first();
         return res::s($guest);
+    }
+
+    public function employees(Request $request){
+        $emp=Employee::join('users','users.id','=','employees.user_id')
+            ->select('employees.*');
+        if($request->withrole){
+            $emp=$emp->where('users.role',$request->role);
+        }
+        return res::S($emp->get());
     }
 }

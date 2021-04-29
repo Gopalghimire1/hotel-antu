@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\HouseKeeping;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,15 +27,30 @@ Route::middleware('auth:api')->group(function () {
     Route::get('rooms', 'Api\RoomController@rooms');
     Route::post('guest','Api\ReservationController@guest');
     Route::get('paid-services','Api\ReservationController@paidServices');
-});
-Route::prefix("reservations")->middleware('auth:api')->group(function () {
-    Route::post('add','Api\ReservationController@reservation');
-    Route::get('','Api\ReservationController@reservationList');
-    Route::get('single/{id}','Api\ReservationController@singleReservation');
-    Route::get('all','Api\ReservationController@all');
-});
-Route::prefix('auth')->middleware('auth:api')->group(function () {
-    Route::get('user', 'Api\AuthController@authUser');
 
+    //get employees
+    Route::post('employees', [AuthController::class,"employees"]);
+});
+Route::middleware(['auth:api'])->group(function () {
+    
+    Route::prefix("reservations")->group(function () {
+        Route::post('add','Api\ReservationController@reservation');
+        Route::get('','Api\ReservationController@reservationList');
+        Route::get('single/{id}','Api\ReservationController@singleReservation');
+        Route::get('all','Api\ReservationController@all');
+    });
+
+    Route::prefix("housekeeping")->group(function () {
+        Route::get("",[HouseKeeping::class,"index"]);
+        Route::get("current",[HouseKeeping::class,"current"]);
+        Route::post("add",[HouseKeeping::class,"add"]);
+        Route::post("changeStatus",[HouseKeeping::class,"changeStatus"]);
+        Route::get("del/{id}",[HouseKeeping::class,"del"]);
+    });
+
+    Route::prefix('auth')->group(function () {
+        Route::get('user', 'Api\AuthController@authUser');
+    
+    });
 });
 

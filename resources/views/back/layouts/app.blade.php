@@ -50,6 +50,7 @@
       unusedLink.setAttribute('rel', '');
       unusedLink.setAttribute('disabled', true);
     </script><!-- END THEME STYLES -->
+    @yield('style')
   </head>
   <body>
 

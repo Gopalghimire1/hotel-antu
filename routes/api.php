@@ -31,8 +31,21 @@ Route::middleware('auth:api')->group(function () {
     //get employees
     Route::post('employees', [AuthController::class,"employees"]);
 });
+Route::prefix('kitchen')->group(function(){
+    Route::post('login','Api\AuthController@kitchenLogin');
+});
+Route::prefix('guest')->group(function(){
+    Route::post('login','Api\Kitchen\AuthController@guestLogin');
+});
 Route::middleware(['auth:api'])->group(function () {
-    
+    Route::prefix('kitchen')->group(function(){
+        Route::prefix('menu')->group(function(){
+            Route::get('','Api\Kitchen\MenuController@index');
+        });
+        Route::prefix('auth')->group(function(){
+        
+        });
+    });
     Route::prefix("reservations")->group(function () {
         Route::post('add','Api\ReservationController@reservation');
         Route::get('','Api\ReservationController@reservationList');

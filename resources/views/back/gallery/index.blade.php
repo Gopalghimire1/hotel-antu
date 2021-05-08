@@ -13,7 +13,15 @@
             <div class="page-inner">
                 <div class="card card-fluid" style="margin-top:1rem;">
                         <!-- .card-header -->
-
+                        <div class="card-header">
+                            <div class="d-md-flex align-items-md-start">
+                                <h3 class="page-title mr-sm-auto">
+                                    Manage Gallery
+                                </h3><!-- .btn-toolbar -->
+                             
+                            </div>
+                           
+                        </div>
                         <div class="card-body">
                             <div id="admin_gallery">
 
@@ -61,8 +69,6 @@
 
 @endsection
 @section('js')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>

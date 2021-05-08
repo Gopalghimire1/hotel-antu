@@ -9,10 +9,42 @@ use App\ApiData as res;
 use App\Models\Employee;
 use App\Models\Guest;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    //
+    public function guestLogin(Request $request)
+    {
+        $user=User::where('unique_id',$request->id)->first();
+        if($user!=null){
+            if(Hash::check($request->password, $user->password)){
+                $user->token = $user->createToken('logintoken')->accessToken;
+                return res::s($user);
+            }
+        }
+        res::f(['Login Failed']);
+    }
+    //kitchen login
+    public function kitchenLogin(Request $request)
+    {
+        $extrainfo = null;
+        $user = null;
+        $okk = false;
+        $token = "";
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $user = Auth::user();
+            $user->token = $user->createToken('logintoken')->accessToken;
+            if($user->role!=0 && $user->role!=1 &&$user->role!=5){
+                return res::f(["Sorry You Are Not Authorized For Current Operation"]);
+                
+            }
+            return res::s($user);
+        }else{
+            return res::f(["Email and Password Missmatch"]);
+        }
+    }
+
+    //frontdesklogin
     public function emaillogin(Request $request)
     {
         $extrainfo = null;

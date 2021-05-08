@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\Kitchen\CategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookController;
 
@@ -103,6 +104,28 @@ Route::group([ 'middleware' => 'role:super','prefix'=>'admin'], function(){
                     Route::match(['GET','POST'],'update/{blog}', [BlogController::class,'update'])->name('update');
                     Route::get('del/{blog}', [BlogController::class,'del'])->name('del');
                 });
+            });
+
+            route::name('kitchen.')->prefix('kitchen')->group(function(){
+
+                route::name('category.')->prefix('category')->group(function(){
+                    route::get('',[CategoryController::class,"index"])->name('index');
+                    route::post('add',[CategoryController::class,"add"])->name('add');
+                    route::post('update',[CategoryController::class,"update"])->name('update');
+                    route::post('del',[CategoryController::class,"del"])->name('del');
+
+
+                    route::get('manage/{cat}',[CategoryController::class,"manage"])->name('manage');
+                });
+
+
+                route::name('item.')->prefix('item')->group(function(){
+                    route::post('addItem',[CategoryController::class,"addItem"])->name('add');
+                    route::post('updateItem',[CategoryController::class,"updateItem"])->name('update');
+                    route::post('delItem',[CategoryController::class,"delItem"])->name('del');
+                });
+
+                
             });
 
         });

@@ -19,6 +19,10 @@ class AuthController extends Controller
             $email=$request->email;
             $password=$request->password;
             if (Auth::attempt(['email' => $email, 'password' => $password], true)) {
+                    if(Auth::user()->role!=0){
+                        Auth::logout();
+                        return redirect()->back()->with('error_message','Permission Denied');
+                    }
                     return redirect()->route(Auth::user()->getRole().'.dashboard');
             }else{
                 return redirect()->back()->with('error_message','Credential do not match');

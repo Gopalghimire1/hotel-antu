@@ -89,6 +89,15 @@
               </ul><!-- /child menu -->
             </li><!-- /.menu-item -->
 
+            <li class="menu-item has-child">
+              <a href="#" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Kitchen Configuration</span></a> <!-- child menu -->
+              <ul class="menu">
+                <li class="menu-item">
+                  <a href="{{ route('admin.kitchen.category.index') }}" class="menu-link">Menu</a>
+                </li>
+              </ul>
+            </li>
+
             <li class="menu-item">
                 <a href="{{ route('admin.gallery.home')}}" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Gallery</span></a>
             </li>
